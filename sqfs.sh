@@ -1,11 +1,11 @@
 #!/bin/sh
 
 # To run:
-# curl -L https://dl.dropboxusercontent.com/u/22813771/sqfs.sh | sh
+# curl -L https://github.com/Gusher123/EasyInstall/raw/master/sqfs.sh | sh
 
 version="2.0-beta-14 d.d. 26-02-2017"
 server="http://boxee-kodi.leechburgltc.com"
-server2="https://dl.dropboxusercontent.com/u/22813771"
+server2="https://github.com/Gusher123/EasyInstall/raw/master"
 server3="http://dl.boxeed.in"
 server4="http://www.busybox.net"
 server5="https://github.com"

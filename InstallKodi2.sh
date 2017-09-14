@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # To run:
-# curl -L https://dl.dropboxusercontent.com/u/22813771/InstallKodi2.sh | sh
+# curl -L https://github.com/Gusher123/EasyInstall/raw/master/InstallKodi2.sh | sh
 
 # Version 2.0-beta-18 d.d. 26-02-2017
 
@@ -40,7 +40,7 @@
 ###################################################################################################################
 
 server="http://boxee-kodi.leechburgltc.com"
-server2="https://dl.dropboxusercontent.com/u/22813771"
+server2="https://github.com/Gusher123/EasyInstall/raw/master"
 server3="http://dl.boxeed.in"
 server4="https://www.archlinux.org/packages/community/i686/busybox"
 server4a="http://mirror.rit.edu/archlinux/community/os/i686/"
@@ -87,52 +87,52 @@ my_ip=`ifconfig | grep "inet addr" | grep -v "127.0.0.1" | awk '{print $2 }' | c
 
 ###################################################################################################################
 
-echo -n Checking $server/installer.sh...
-http_code=$(curl -L -s -o /tmp/out.html -w '%{http_code}' $server/installer.sh --connect-timeout 25;)
-if [[ $http_code -ne 200 ]]
-then
-	dialog --clear --backtitle "Server offline" --title " Kodi server offline " --yes-label " Use Backup server " --no-label " Use Kodi server " --yesno "\nIt seems that the Kodi server ($server) is offline. (Code: $http_code)\n\nPlease report to http://boxeed.in/forums/viewtopic.php?f=5&t=1216\n\nDo you want to use my backup of the Kodi server instead?\n\nThe backup server might not be up to date." 13 70
-	if [ $? -eq 0 ]
-	then
-		server=$server2"/backup/kodi"
-		kodi_backup=1
-	else
-		kodi_backup=0
-	fi
-	echo ""
-else
-	echo " Online."
-fi
-
-echo -n Checking $server3/install.sh...
-http_code=$(curl -L -s -o /tmp/out.html -w '%{http_code}' $server3/install.sh --connect-timeout 25;)
-if [[ $http_code -ne 200 ]]
-then
-	dialog --clear --backtitle "Server offline" --title " Boxee+Hacks server offline " --yes-label " Use Backup server " --no-label " Use Boxee+Hacks server " --yesno "\nIt seems that the Boxee+Hacks server ($server3) is offline. (Code: $http_code)\n\nPlease report to http://boxeed.in/forums/viewtopic.php?f=5&t=1104\n\nDo you want to use my backup of the Boxee+Hacks server instead?\n\nThe backup server might not be up to date." 13 70
-	if [ $? -eq 0 ]
-	then
-		server3=$server2"/backup/hacks"
-		hacks_backup=1
-	else
-		hacks_backup=0
-	fi
-	echo ""
-else
-	echo " Online."
-fi
-
-if [ "$serial" = "QL034C1006667" ]
-then
-	dialog --clear --title " Hello Gusher " --yes-label " Use Dropbox " --no-label " Use Standard " --yesno "\nHello Gusher\n\nDo you want to use the Kodi server or your Dropbox backup?" 10 70
-	if [ $? -eq 0 ]
-	then
-		server=$server2"/backup/kodi"
-		server3=$server2"/backup/hacks"
-		dropbox=1
-	else
-		dropbox=0
-	fi
-fi
+#echo -n Checking $server/installer.sh...
+#http_code=$(curl -L -s -o /tmp/out.html -w '%{http_code}' $server/installer.sh --connect-timeout 25;)
+#if [[ $http_code -ne 200 ]]
+#then
+#	dialog --clear --backtitle "Server offline" --title " Kodi server offline " --yes-label " Use Backup server " --no-label " Use Kodi server " --yesno "\nIt seems that the Kodi server ($server) is offline. (Code: $http_code)\n\nPlease report to http://boxeed.in/forums/viewtopic.php?f=5&t=1216\n\nDo you want to use my backup of the Kodi server instead?\n\nThe backup server might not be up to date." 13 70
+#	if [ $? -eq 0 ]
+#	then
+#		server=$server2"/backup/kodi"
+#		kodi_backup=1
+#	else
+#		kodi_backup=0
+#	fi
+#	echo ""
+#else
+#	echo " Online."
+#fi
+#
+#echo -n Checking $server3/install.sh...
+#http_code=$(curl -L -s -o /tmp/out.html -w '%{http_code}' $server3/install.sh --connect-timeout 25;)
+#if [[ $http_code -ne 200 ]]
+#then
+#	dialog --clear --backtitle "Server offline" --title " Boxee+Hacks server offline " --yes-label " Use Backup server " --no-label " Use Boxee+Hacks server " --yesno "\nIt seems that the Boxee+Hacks server ($server3) is offline. (Code: $http_code)\n\nPlease report to http://boxeed.in/forums/viewtopic.php?f=5&t=1104\n\nDo you want to use my backup of the Boxee+Hacks server instead?\n\nThe backup server might not be up to date." 13 70
+#	if [ $? -eq 0 ]
+#	then
+#		server3=$server2"/backup/hacks"
+#		hacks_backup=1
+#	else
+#		hacks_backup=0
+#	fi
+#	echo ""
+#else
+#	echo " Online."
+#fi
+#
+#if [ "$serial" = "QL034C1006667" ]
+#then
+#	dialog --clear --title " Hello Gusher " --yes-label " Use Dropbox " --no-label " Use Standard " --yesno "\nHello Gusher\n\nDo you want to use the Kodi server or your Dropbox backup?" 10 70
+#	if [ $? -eq 0 ]
+#	then
+#		server=$server2"/backup/kodi"
+#		server3=$server2"/backup/hacks"
+#		dropbox=1
+#	else
+#		dropbox=0
+#	fi
+#fi
 
 ###################################################################################################################
 
@@ -204,11 +204,11 @@ installhacks()
 	else
 		echo MD5 checksum OK
 	fi
-	if [ "$dropbox" -eq 1 ] || [ "$hacks_backup" -eq 1 ]
-	then
-		echo Patch script to use Dropbox
-		sed -i 's/http:\/\/dl.boxeed.in/https:\/\/dl.dropboxusercontent.com\/u\/22813771\/backup\/hacks/' /download/install.sh
-	fi
+#	if [ "$dropbox" -eq 1 ] || [ "$hacks_backup" -eq 1 ]
+#	then
+#		echo Patch script to use Dropbox
+#		sed -i 's/http:\/\/dl.boxeed.in/https:\/\/dl.dropboxusercontent.com\/u\/22813771\/backup\/hacks/' /download/install.sh
+#	fi
 	echo Patch script not to delete itself
 	sed -i 's/for f in \/download\/\*; do/for f in \/download\/\*; do\nbreak/' /download/install.sh
 #	sed -i 's/\[ \${f} != "\/download\/xbmc" \]/[ \${f} != "\/download\/xbmc" \] \&\& [ \${f} != "\/download\/install.sh" \]/' /download/install.sh
@@ -369,11 +369,11 @@ else
 fi
 echo Patch script to use curl in stead of wget
 sed -i 's/#! \/bin\/sh/&\n\nwget()\n{\ncurl -# $3 -o $2\n}/g' /tmp/installer.sh
-if [ "$dropbox" -eq 1 ] || [ "$kodi_backup" -eq 1 ]
-then
-	echo Patch script to use Dropbox
-	sed -i 's/http:\/\/boxee-kodi.leechburgltc.com/https:\/\/dl.dropboxusercontent.com\/u\/22813771\/backup\/kodi/' /tmp/installer.sh
-fi
+#if [ "$dropbox" -eq 1 ] || [ "$kodi_backup" -eq 1 ]
+#then
+#	echo Patch script to use Dropbox
+#	sed -i 's/http:\/\/boxee-kodi.leechburgltc.com/https:\/\/dl.dropboxusercontent.com\/u\/22813771\/backup\/kodi/' /tmp/installer.sh
+#fi
 #echo "Patch script to add pauses before clearing the screen"
 #sed -i 's/clear/echo -n "Done. Press any key to continue...";read a;clear/' /tmp/installer.sh
 echo "Patch script to use graphical dialog boxes"

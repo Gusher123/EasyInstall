@@ -2,6 +2,8 @@
 
 BASEDIR=`dirname $0`
 
+server2="https://github.com/Gusher123/EasyInstall/raw/master"
+
 touch $BASEDIR/install.log
 
 if [ -d /data/hack/www ]
@@ -16,8 +18,8 @@ else
 	cp /opt/local/www/* /data/hack/www/ 2>&1 | tee -a $BASEDIR/install.log
 	echo Downloading the hack to /tmp/thttpd_hack | tee -a $BASEDIR/install.log
 	mkdir /tmp/thttpd_hack 2>&1 | tee -a $BASEDIR/install.log
-	curl -L https://dl.dropboxusercontent.com/u/22813771/boxee_hacks_thttpd4.zip -o /tmp/thttpd_hack/boxee_hacks_thttpd4.zip 2>/dev/null
-	curl -L https://dl.dropboxusercontent.com/u/22813771/boxee_hacks_thttpd4.md5 -o /tmp/thttpd_hack/boxee_hacks_thttpd4.md5 2>/dev/null
+	curl -L $server2/boxee_hacks_thttpd4.zip -o /tmp/thttpd_hack/boxee_hacks_thttpd4.zip 2>/dev/null
+	curl -L $server2/boxee_hacks_thttpd4.md5 -o /tmp/thttpd_hack/boxee_hacks_thttpd4.md5 2>/dev/null
 	md5_1=$(md5sum /tmp/thttpd_hack/boxee_hacks_thttpd4.zip | awk '{print $1}')
 	md5_2=$(awk '{print $1}' "/tmp/thttpd_hack/boxee_hacks_thttpd4.md5")
 	echo "MD5 of zip: $md5_1" | tee -a $BASEDIR/install.log
