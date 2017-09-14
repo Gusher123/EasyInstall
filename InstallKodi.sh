@@ -122,7 +122,7 @@ then
 	echo "Dialog not available, installing it temporarily in /tmp/dialog/"
 	echo "- Downloading Dialog"
 	mkdir -p /tmp/dialog
-	curl -L -s $server2/backup/kodi/dialog -o /tmp/dialog/dialog 
+	curl -L -s $server2/dialog -o /tmp/dialog/dialog 
 	echo "- Installing it to /tmp/dialog/"
 	chmod +x /tmp/dialog/dialog
 	echo "- Adding /tmp/dialog/ to PATH"

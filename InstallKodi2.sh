@@ -57,7 +57,7 @@ dtool 6 2 0 50
 if [ ! -f /tmp/dialog/dialog ]
 then
 	mkdir -p /tmp/dialog
-	curl -L -s $server2/backup/kodi/dialog -o /tmp/dialog/dialog 
+	curl -L -s $server2/dialog -o /tmp/dialog/dialog 
 	chmod +x /tmp/dialog/dialog
 fi
 
