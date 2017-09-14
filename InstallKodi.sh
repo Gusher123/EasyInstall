@@ -3,8 +3,9 @@
 # To run:
 # curl -L https://github.com/Gusher123/EasyInstall/raw/master/InstallKodi.sh | sh
 
-# Version 2.0-beta-15 d.d. 08-02-2017
+# Version 2.1 d.d. 14-09-2017
 
+# Last update: URL's Changed
 # Updated server4 string to latest version busybox 
 # Added empty the /download/ directory to make space for the installation
 # Use /opt/local/bin/ps specifically for compatability when installing busybox

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Last update: URL's Changed
+
 server2="https://github.com/Gusher123/EasyInstall/raw/master"
 
 case $1 in

@@ -3,8 +3,9 @@
 # To run:
 # curl -L https://github.com/Gusher123/EasyInstall/raw/master/InstallKodi2.sh | sh
 
-# Version 2.0-beta-18 d.d. 26-02-2017
+# Version 2.1 d.d. 14-09-2017
 
+# Last update: URL's Changed
 # Substitute wget for curl in Orizzle's script, because wget stalls when downloading xbmc/kodi from his site
 # Moved the checking server offline up and added a timeout of 25 seconds.
 # Workaroud for SSL curl problem with www.archlinux.org website, downloading from busybox.net instead

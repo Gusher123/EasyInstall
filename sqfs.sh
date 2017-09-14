@@ -3,7 +3,9 @@
 # To run:
 # curl -L https://github.com/Gusher123/EasyInstall/raw/master/sqfs.sh | sh
 
-version="2.0-beta-14 d.d. 26-02-2017"
+# Last update: URL's Changed
+
+version="2.1 d.d. 14-09-2017"
 server="http://boxee-kodi.leechburgltc.com"
 server2="https://github.com/Gusher123/EasyInstall/raw/master"
 server3="http://dl.boxeed.in"
