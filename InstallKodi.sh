@@ -1,8 +1,7 @@
 #!/bin/sh
 
 # To run:
-# curl -L https://dl.dropboxusercontent.com/u/22813771/InstallKodi.sh | sh
-# curl -L http://tinyurl.com/boxeehacks | sh
+# curl -L https://github.com/Gusher123/EasyInstall/raw/master/InstallKodi.sh | sh
 
 # Version 2.0-beta-15 d.d. 08-02-2017
 
@@ -19,7 +18,7 @@
 my_ip=`ifconfig | grep "inet addr" | grep -v "127.0.0.1" | awk '{print $2 }' | cut -f2 -d:`
 
 server="http://boxee-kodi.leechburgltc.com"
-server2="https://dl.dropboxusercontent.com/u/22813771"
+server2="https://github.com/Gusher123/EasyInstall/raw/master"
 server3="http://dl.boxeed.in"
 server4="https://busybox.net/downloads/binaries/1.26.2-i686/busybox"
 
