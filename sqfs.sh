@@ -29,7 +29,7 @@ latest()
 {
 if [ ! -f /tmp/releases.quasar1 ] ; then 
 	curl -L -s $server5/quasar1/boxeebox-xbmc/releases -o /tmp/releases.quasar1.html
-	cat /tmp/releases.quasar1.html | grep release-downloads -A 5 | grep href | awk '{print $2}' | cut -d '"' -f 2 | cut -d '/' -f 7 | cut -d '.' -f 1-2 >/tmp/releases.quasar1
+	cat /tmp/releases.quasar1.html | grep release-downloads -A 5 | grep href | grep releases | awk '{print $2}' | cut -d '"' -f 2 | cut -d '/' -f 7 | cut -d '.' -f 1-2 >/tmp/releases.quasar1
 fi
 if [ ! -f /tmp/releases.orizzle ] ; then 
 	curl -L -s $server/releases.php | sort -t : -k 3 -r | cut -d ":" -f 2 >/tmp/releases.orizzle
