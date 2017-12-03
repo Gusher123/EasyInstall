@@ -5,7 +5,7 @@
 
 # Last update: URL's Changed
 
-version="2.1 d.d. 14-09-2017"
+version="2.2 d.d. 03-12-2017"
 server="http://boxee-kodi.leechburgltc.com"
 server2="https://github.com/Gusher123/EasyInstall/raw/master"
 server3="http://dl.boxeed.in"
