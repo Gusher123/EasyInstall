@@ -68,6 +68,7 @@ fi
 
 cat /tmp/releases.orizzle | grep -q $latest_quasar1
 #if [ ! $? = 0 ] && [ ! $latest_quasar1 == $latest_usb ]
+read tom
 if [ ! $? = 0 ]
 then
 	dialog --clear --backtitle "Newer version on git" --title " Make sqfs image yourself? " --yes-label " Make sqfs image yourself " --no-label " Return " --yesno "\nThere is a new Kodi version available on git that is not yet available as a precompiled image.\n\nGit:  "$latest_quasar1"\nSite: "$latest_orizzle"\n\nDo you want to use this newer version and compile the sqfs image? You only need and empty USB drive to do this.\n" 14 70
