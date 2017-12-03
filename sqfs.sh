@@ -153,7 +153,7 @@ makesqfs()
 #	echo -e "\n" >>/tmp/sqfs.log
 	cat /proc/partitions | grep sd >>/tmp/sqfs.log
 #	mkfs.ext3 -L $label $partition >>/tmp/sqfs.log
-	mkfs.vfat -n $label $partition >>/tmp/sqfs.log
+	/tmp/busybox/mkfs.vfat -n $label $partition >>/tmp/sqfs.log
 	sleep 5
 	echo "Step 4/10: mounting $partition partition on $mount_dir"/ | tee -a /tmp/sqfs.log
 	if [ ! -d $mount_dir/ ] ; then mkdir $mount_dir/ ; echo "mkdir $mount_dir/" >>/tmp/sqfs.log ; fi
