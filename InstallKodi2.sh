@@ -143,7 +143,7 @@ boxeed_in_version_string=`curl -L -s $server3/version 2>/dev/null`
 boxeed_in_version=`echo $boxeed_in_version_string 2>/dev/null | sed -e 's/\.//g' -e :a -e 's/^.\{1,2\}$/&0/;ta'`
 
 curl -L -s $server5/quasar1/boxeebox-xbmc/releases -o /tmp/releases.quasar1.html
-cat /tmp/releases.quasar1.html | grep release-downloads -A 5 | grep href | awk '{print $2}' | cut -d '"' -f 2 | cut -d '/' -f 7 | cut -d '.' -f 1-2 >/tmp/releases.quasar1
+cat /tmp/releases.quasar1.html | grep release-downloads -A 5 | grep href | grep releases | awk '{print $2}' | cut -d '"' -f 2 | cut -d '/' -f 7 | cut -d '.' -f 1-2 >/tmp/releases.quasar1
 
 curl -L -s $server/releases.php -o /tmp/releases.php
 if [ -f /media/BOXEE/xbmc.sqfs ] && [ -f /media/BOXEE/addons.tar.bz2 ] && [ -f /media/BOXEE/build.md5 ]
