@@ -3,15 +3,16 @@
 # To run:
 # curl -L https://github.com/Gusher123/EasyInstall/raw/master/InstallKodi2.sh | sh
 
-# Version 2.1 d.d. 14-09-2017
+# Version 2.2 d.d. 03-12-2017
 
-# Last update: URL's Changed
+# Last update: updated releases.git and inserted extra "grep releases" to prevent source showing up between releases
+# URL's Changed
 # Substitute wget for curl in Orizzle's script, because wget stalls when downloading xbmc/kodi from his site
 # Moved the checking server offline up and added a timeout of 25 seconds.
 # Workaroud for SSL curl problem with www.archlinux.org website, downloading from busybox.net instead
 # Sorting releases by date
 # Updated busybox script to download latest available version (1.24.1)
-# Remove /data/hack/bin/cp because it is not backwards compatible with original /opt/local/bin/ps
+# Remove /data/hack/bin/ps because it is not backwards compatible with original /opt/local/bin/ps
 # Read/write buildinfo for 'Install_Kodi_from_usb_stick' to/from build.md5 file
 # Updated script for making a sqfs image on a USB drive; added logging, rewrote (un)partitioning part of the script
 # Check for newer versions on github and if there is one, offer to run makesqfs script
