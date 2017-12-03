@@ -49,8 +49,8 @@ do
 	then
 	#	echo "Dropbox list for making sqfs files yourself is not up to date"
 	#	The format for /tmp/build.git is: /$path/$filename.$extention:$friendlyname:$builddate:$buildcategory
-		url=`cat /tmp/releases.quasar1.html | grep release-downloads -A 5 | grep href | awk '{print $2}' | cut -d '"' -f 2 | grep $line`
-		friendlyname=`cat /tmp/releases.quasar1.html | grep release-downloads -A 5 | grep href | awk '{print $2}' | cut -d '"' -f 2 | cut -d '/' -f 7 | grep $line`
+		url=`cat /tmp/releases.quasar1.html | grep release-downloads -A 5 | grep href | grep releases | awk '{print $2}' | cut -d '"' -f 2 | grep $line`
+		friendlyname=`cat /tmp/releases.quasar1.html | grep release-downloads -A 5 | grep href | grep releases | awk '{print $2}' | cut -d '"' -f 2 | cut -d '/' -f 7 | grep $line`
 		builddate=`echo $line | cut -d '-' -f 3-5`
 		buildcategory=`echo $line | cut -d '-' -f 7`
 		echo $url:$friendlyname:$builddate:$buildcategory >>/tmp/releases.git1
