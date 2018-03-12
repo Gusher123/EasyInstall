@@ -42,7 +42,8 @@
 ###################################################################################################################
 
 server="http://boxee-kodi.leechburgltc.com"
-server2="https://github.com/Gusher123/EasyInstall/raw/master"
+#server2="https://github.com/Gusher123/EasyInstall/raw/master"
+server2="https://raw.githubusercontent.com/Gusher123/EasyInstall/master"
 server3="http://dl.boxeed.in"
 server4="https://www.archlinux.org/packages/community/i686/busybox"
 #server4a="http://mirror.rit.edu/archlinux/community/os/i686/"
