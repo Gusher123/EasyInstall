@@ -19,7 +19,8 @@
 my_ip=`ifconfig | grep "inet addr" | grep -v "127.0.0.1" | awk '{print $2 }' | cut -f2 -d:`
 
 server="http://boxee-kodi.leechburgltc.com"
-server2="https://github.com/Gusher123/EasyInstall/raw/master"
+#server2="https://github.com/Gusher123/EasyInstall/raw/master"
+server2="https://raw.githubusercontent.com/Gusher123/EasyInstall/master"
 server3="http://dl.boxeed.in"
 server4="https://busybox.net/downloads/binaries/1.26.2-i686/busybox"
 
