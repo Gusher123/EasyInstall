@@ -50,7 +50,7 @@ server3="http://dl.boxeed.in"
 #server4a="https://mirror.archlinux32.org/i686/community/"
 server4b="https://git.archlinux.org/svntogit/community.git/log/?h=packages/busybox"
 #server4c="https://busybox.net/downloads/binaries/1.27.1-i686/busybox"
-server4c="https://busybox.net/downloads/binaries/1.28.1-defconfig-multiarch"
+server4c="https://busybox.net/downloads/binaries/1.28.1-defconfig-multiarch/busybox-i686"
 server5="https://github.com"
 
 # Change logo back to green
