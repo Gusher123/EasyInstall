@@ -7,7 +7,7 @@
 
 version="2.2 d.d. 03-12-2017"
 server="http://boxee-kodi.leechburgltc.com"
-server2="https://github.com/Gusher123/EasyInstall/raw/master"
+server2="https://raw.githubusercontent.com/Gusher123/EasyInstall/master"
 server3="http://dl.boxeed.in"
 server4="http://www.busybox.net"
 server5="https://github.com"
