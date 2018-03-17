@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # To run:
-# curl -L https://github.com/Gusher123/EasyInstall/raw/master/sqfs.sh | sh
+# curl -L https://raw.githubusercontent.com/Gusher123/EasyInstall/master/sqfs.sh | sh
 
 # Last update: URL's Changed
 

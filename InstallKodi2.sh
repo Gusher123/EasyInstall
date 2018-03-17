@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # To run:
-# curl -L https://github.com/Gusher123/EasyInstall/raw/master/InstallKodi2.sh | sh
+# curl -L https://raw.githubusercontent.com/Gusher123/EasyInstall/master/InstallKodi2.sh | sh
 
 # Version 2.2 d.d. 03-12-2017
 
