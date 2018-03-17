@@ -22,7 +22,8 @@ server="http://boxee-kodi.leechburgltc.com"
 #server2="https://github.com/Gusher123/EasyInstall/raw/master"
 server2="https://raw.githubusercontent.com/Gusher123/EasyInstall/master"
 server3="http://dl.boxeed.in"
-server4="https://busybox.net/downloads/binaries/1.26.2-i686/busybox"
+#server4="https://busybox.net/downloads/binaries/1.26.2-i686/busybox"
+server4="https://busybox.net/downloads/binaries/1.28.1-defconfig-multiarch/busybox-i686"
 
 if [ `uptime| awk '{print $3}'|cut -d',' -f 1|cut -d':' -f 2` -lt 2 ];
 then
