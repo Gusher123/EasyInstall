@@ -406,25 +406,10 @@ else
 	sed -i 's/cut -d: -f2/cut -d: -f1/' /tmp/installer.sh
 	echo "Patch script to delete current addons before installing ones from usb"
 	sed -i 's/bar -n/if [ $build == "Install_Kodi_from_usb_stick" ]\nthen\nrm -rf \/data\/hack\/xbmc\/addons\/*\nfi\n\nbar -n/' /tmp/installer.sh
-#	if [ -f /media/BOXEE/xbmc.sqfs ] && [ -f /media/BOXEE/addons.tar.bz2 ] && [ -f /media/BOXEE/build.md5 ]
-#	then
-#		echo "SQFS image files found on usb drive. Adding it to the menu"
-#		buildname=`cat /media/BOXEE/build.md5 | grep buildname | awk '{print$3}'`
-#		builddesc=`cat /media/BOXEE/build.md5 | grep builddesc | awk '{print$3}'`
-#		buildtype=`cat /media/BOXEE/build.md5 | grep buildtype | awk '{print$3}'`
-#		buildtime=`cat /media/BOXEE/build.md5 | grep buildtime | awk '{print$3}'`
-#		echo $buildname:$builddesc:$buildtime:$buildtype >/tmp/releases.new
-#		cat /tmp/releases >>/tmp/releases.new
-#		mv /tmp/releases.new /tmp/releases
-#	fi
-	echo "Patch script to enable you to make your own SQFS image"
-	curl -L -s $server2/sqfs.sh -o /tmp/sqfs.sh
-	chmod +rwx /tmp/sqfs.sh
-#	sed -i 's/--backtitle \\"Release Selection\\"/--backtitle \\"Release Selection\\" --ok-label \\"Use precompiled\\" --extra-button --extra-label \\"Make SQFS image\\"/' /tmp/installer.sh
-	sed -i 's/options=/\/tmp\/sqfs.sh checklatest\n\noptions=/' /tmp/installer.sh
-#	awk '/echo Installation cancelled!/{c++;if(c==3){sub("echo Installation cancelled!","if [ $ret -eq 3 ] ; then sh /tmp/sqfs.sh; fi");c=0}}1' /tmp/installer.sh >/tmp/installer.awk
-#	mv /tmp/installer.awk /tmp/installer.sh
-#	chmod +rwx /tmp/installer.sh
+#	echo "Patch script to enable you to make your own SQFS image"
+#	curl -L -s $server2/sqfs.sh -o /tmp/sqfs.sh
+#	chmod +rwx /tmp/sqfs.sh
+#	sed -i 's/options=/\/tmp\/sqfs.sh checklatest\n\noptions=/' /tmp/installer.sh
 fi
 echo "Patch script to replace existing reboot section with a dialog box"
 sed -i 's/echo -n You must reboot to complete the installation./dialog --clear --title " Poweroff " --yes-label " Poweroff " --no-label " Start a shell "  --yesno "\nYou must restart your boxeebox to complete the installation." 7 70 ; if [ $? -eq 0 ] ; then poweroff ; else exit ; fi/' /tmp/installer.sh
