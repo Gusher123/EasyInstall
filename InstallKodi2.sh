@@ -80,11 +80,12 @@ for f in /data/plugins/*; do
 done
 
 export PATH="${THEPATH}"
-export LD_LIBRARY_PATH='.:/tmp/lib:/data/hack/lib:/opt/local/lib:/usr/local/lib:/usr/lib:/lib:/lib/gstreamer-0.10:/opt/local/lib/qt'
+export LD_LIBRARY_PATH='.:/tmp/libcurl:/tmp/lib:/data/hack/lib:/opt/local/lib:/usr/local/lib:/usr/lib:/lib:/lib/gstreamer-0.10:/opt/local/lib/qt'
 export HOME='/data/hack'
 export ENV='/data/etc/.profile'
 export TERM=vt102
 export TERMINFO='/share/terminfo/'
+export CURL_CA_BUNDLE=/tmp/cacert.pem
 #export DIALOGRC='/tmp/.dialogrc'
 
 serial=`/opt/local/bin/get_platform_params 2`
@@ -249,6 +250,11 @@ installhacks()
 	boxee_hacks_version_string=`cat /data/hack/version 2>/dev/null`
 	boxee_hacks_version=`echo $boxee_hacks_version_string 2>/dev/null | sed -e 's/\.//g' -e :a -e 's/^.\{1,2\}$/&0/;ta'`
 	echo "Done!"
+	unzip -o -q /tmp/libcurl.zip -d /data/hack/lib/
+	mkdir -p /data/hack/certs
+	cp /tmp/cacert.pem /data/hack/certs/cacert.pem
+	export CURL_CA_BUNDLE=/data/hack/certs/cacert.pem
+	sed -i '/profile/aexport CURL_CA_BUNDLE=\/data\/hack\/certs\/cacert.pem' /data/hack/misc/shell.sh
 	Sleep 2
 }
 
@@ -407,10 +413,10 @@ else
 	sed -i 's/cut -d: -f2/cut -d: -f1/' /tmp/installer.sh
 	echo "Patch script to delete current addons before installing ones from usb"
 	sed -i 's/bar -n/if [ $build == "Install_Kodi_from_usb_stick" ]\nthen\nrm -rf \/data\/hack\/xbmc\/addons\/*\nfi\n\nbar -n/' /tmp/installer.sh
-#	echo "Patch script to enable you to make your own SQFS image"
-#	curl -L -s $server2/sqfs.sh -o /tmp/sqfs.sh
-#	chmod +rwx /tmp/sqfs.sh
-#	sed -i 's/options=/\/tmp\/sqfs.sh checklatest\n\noptions=/' /tmp/installer.sh
+	echo "Patch script to enable you to make your own SQFS image"
+	curl -L -s $server2/sqfs.sh -o /tmp/sqfs.sh
+	chmod +rwx /tmp/sqfs.sh
+	sed -i 's/options=/\/tmp\/sqfs.sh checklatest\n\noptions=/' /tmp/installer.sh
 fi
 echo "Patch script to replace existing reboot section with a dialog box"
 sed -i 's/echo -n You must reboot to complete the installation./dialog --clear --title " Poweroff " --yes-label " Poweroff " --no-label " Start a shell "  --yesno "\nYou must restart your boxeebox to complete the installation." 7 70 ; if [ $? -eq 0 ] ; then poweroff ; else exit ; fi/' /tmp/installer.sh

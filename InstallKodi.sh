@@ -19,10 +19,8 @@
 my_ip=`ifconfig | grep "inet addr" | grep -v "127.0.0.1" | awk '{print $2 }' | cut -f2 -d:`
 
 server="http://boxee-kodi.leechburgltc.com"
-#server2="https://github.com/Gusher123/EasyInstall/raw/master"
 server2="https://raw.githubusercontent.com/Gusher123/EasyInstall/master"
 server3="http://dl.boxeed.in"
-#server4="https://busybox.net/downloads/binaries/1.26.2-i686/busybox"
 server4="https://busybox.net/downloads/binaries/1.28.1-defconfig-multiarch/busybox-i686"
 
 if [ `uptime| awk '{print $3}'|cut -d',' -f 1|cut -d':' -f 2` -lt 2 ];
@@ -72,6 +70,23 @@ then
 	fi
 	touch /data/etc/boxeehal.conf
 	touch /data/.boxee/UserData/guisettings.xml
+fi
+
+# We need to install new curl libraries if they are not available in /data/hack/lib or /tmp/lib/
+if [ -f /data/hack/lib/libcurl.so.4 ] || [ -f /tmp/lib/libcurl.so.4 ]
+then
+	echo Libcurl libraries available
+else
+	echo Libcurl libraries not available, installing them temporarily in /tmp/lib
+	echo - Downloading libcurl.zip
+	mkdir -p /tmp/libcurl
+	curl -L -s $server2/libcurl.zip -o /tmp/libcurl.zip
+	echo - Extracting libcurl.zip to /tmp/libcurl/
+	unzip -o -q /tmp/libcurl.zip -d /tmp/libcurl/
+	echo - Adding /tmp/libcurl/ to LD_LIBRARY_PATH
+	export LD_LIBRARY_PATH=/tmp/libcurl:$LD_LIBRARY_PATH
+	curl --cacert /opt/local/share/curl/ca-bundle.crt https://curl.haxx.se/ca/cacert.pem -o /tmp/cacert.pem
+	export CURL_CA_BUNDLE=/tmp/cacert.pem
 fi
 
 # Download a shell that can exist in /tmp/ before Boxee+hacks is installed.
