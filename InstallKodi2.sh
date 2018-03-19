@@ -148,6 +148,7 @@ boxeed_in_version=`echo $boxeed_in_version_string 2>/dev/null | sed -e 's/\.//g'
 
 #curl -L -s $server5/quasar1/boxeebox-xbmc/releases -o /tmp/releases.quasar1.html
 #cat /tmp/releases.quasar1.html | grep release-downloads -A 5 | grep href | grep releases | awk '{print $2}' | cut -d '"' -f 2 | cut -d '/' -f 7 | cut -d '.' -f 1-2 >/tmp/releases.quasar1
+#cat /tmp/releases.quasar1.html | grep KODI | grep download | awk '{print $2}' | cut -d '"' -f 2 | cut -d '/' -f 7 | cut -d '.' -f 1-2 >/tmp/releases.quasar1
 echo KODI_14.2-Git-2017-11-12-a103c6f-hybrid>/tmp/releases.quasar1
 
 curl -L -s $server/releases.php -o /tmp/releases.php

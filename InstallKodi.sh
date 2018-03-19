@@ -138,7 +138,7 @@ if [ -d /data/hack/lib/ ] || [ -d /tmp/lib/ ]
 then
 	echo Libraries available
 else
-	echo Libraries not available, installing them temporarily in /tmp/libraries
+	echo Libraries not available, installing them temporarily in /tmp/lib
 	echo - Downloading lib.tgz
 	mkdir -p /tmp/lib
 	curl -L -s $server2/lib.tgz -o /tmp/lib.tgz
