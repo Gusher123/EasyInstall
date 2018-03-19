@@ -249,13 +249,15 @@ installhacks()
 	chmod +x /data/hack/misc/uninstall_hacks.sh
 	boxee_hacks_version_string=`cat /data/hack/version 2>/dev/null`
 	boxee_hacks_version=`echo $boxee_hacks_version_string 2>/dev/null | sed -e 's/\.//g' -e :a -e 's/^.\{1,2\}$/&0/;ta'`
-	echo "Done!"
-	unzip -o -q /tmp/libcurl.zip -d /data/hack/lib/
+	echo "Installing new curl libraries and CA certificates"
+	unzip -o /tmp/libcurl.zip -d /data/hack/lib/
 	mkdir -p /data/hack/certs
 	cp /tmp/cacert.pem /data/hack/certs/cacert.pem
 	export CURL_CA_BUNDLE=/data/hack/certs/cacert.pem
+	echo "Patching shell"
 	sed -i '/profile/aexport CURL_CA_BUNDLE=\/data\/hack\/certs\/cacert.pem' /data/hack/misc/shell.sh
-	Sleep 2
+	echo "Done!"
+	sleep 1
 }
 
 ###################################################################################################################

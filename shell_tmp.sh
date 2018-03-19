@@ -9,11 +9,13 @@ for f in /data/plugins/*; do
 done
 
 export PATH="${THEPATH}"
-export LD_LIBRARY_PATH='.:/usr/local/DFBTerm/lib:/data/hack/lib:/opt/local/lib:/usr/local/lib:/usr/lib:/lib:/lib/gstreamer-0.10:/opt/local/lib/qt'
+export LD_LIBRARY_PATH='.:/tmp/libcurl:/usr/local/DFBTerm/lib:/data/hack/lib:/opt/local/lib:/usr/local/lib:/usr/lib:/lib:/lib/gstreamer-0.10:/opt/local/lib/qt'
 export HOME='/tmp'
 export ENV='/data/etc/.profile'
 export TERM=vt102
 export TERMINFO='/share/terminfo/'
+export CURL_CA_BUNDLE=/tmp/cacert.pem
+
 
         echo "------------------------"
         echo " Welcome to Boxee+Hacks "
