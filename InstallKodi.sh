@@ -3,8 +3,9 @@
 # To run:
 # curl -L https://raw.githubusercontent.com/Gusher123/EasyInstall/master/InstallKodi.sh | sh
 
-# Version 2.1 d.d. 14-09-2017
+# Version 2.3 d.d. 19-03-2018
 
+# Multiple changes because of curllibs being outdatd.
 # Last update: URL's Changed
 # Updated server4 string to latest version busybox 
 # Added empty the /download/ directory to make space for the installation
@@ -72,7 +73,7 @@ then
 	touch /data/.boxee/UserData/guisettings.xml
 fi
 
-# We need to install new curl libraries if they are not available in tmp/lib/
+# We need to install new curl libraries in tmp/lib/
 if [ -f /tmp/lib/libcurl.so.4 ]
 then
 	echo Libcurl libraries available

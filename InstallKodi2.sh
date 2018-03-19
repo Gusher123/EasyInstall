@@ -3,8 +3,9 @@
 # To run:
 # curl -L https://raw.githubusercontent.com/Gusher123/EasyInstall/master/InstallKodi2.sh | sh
 
-# Version 2.2 d.d. 03-12-2017
+# Version 2.3 d.d. 19-03-2018
 
+# Multiple changes because of curllibs being outdatd.
 # Last update: updated releases.git and inserted extra "grep releases" to prevent source showing up between releases
 # URL's Changed
 # Substitute wget for curl in Orizzle's script, because wget stalls when downloading xbmc/kodi from his site
@@ -151,7 +152,7 @@ cat /tmp/releases.quasar1.html | grep KODI | grep download | awk '{print $2}' | 
 curl -L -s $server/releases.php -o /tmp/releases.php
 if [ -f /media/BOXEE/xbmc.sqfs ] && [ -f /media/BOXEE/addons.tar.bz2 ] && [ -f /media/BOXEE/build.md5 ]
 then
-	echo "SQFS image files found on usb drive. Adding it to the menu"
+	# "SQFS image files found on usb drive. Adding it to the menu"
 	buildname=`cat /media/BOXEE/build.md5 | grep buildname | awk '{print$3}'`
 	builddesc=`cat /media/BOXEE/build.md5 | grep builddesc | awk '{print$3}'`
 	buildtype=`cat /media/BOXEE/build.md5 | grep buildtype | awk '{print$3}'`
