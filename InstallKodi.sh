@@ -72,8 +72,8 @@ then
 	touch /data/.boxee/UserData/guisettings.xml
 fi
 
-# We need to install new curl libraries if they are not available in /data/hack/lib or /tmp/lib/
-if [ -f /data/hack/lib/libcurl.so.4 ] || [ -f /tmp/lib/libcurl.so.4 ]
+# We need to install new curl libraries if they are not available in tmp/lib/
+if [ -f /tmp/lib/libcurl.so.4 ]
 then
 	echo Libcurl libraries available
 else
