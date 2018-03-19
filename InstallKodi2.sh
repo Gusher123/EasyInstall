@@ -45,11 +45,8 @@ server="http://boxee-kodi.leechburgltc.com"
 #server2="https://github.com/Gusher123/EasyInstall/raw/master"
 server2="https://raw.githubusercontent.com/Gusher123/EasyInstall/master"
 server3="http://dl.boxeed.in"
-#server4="https://www.archlinux.org/packages/community/i686/busybox"
-#server4a="http://mirror.rit.edu/archlinux/community/os/i686/"
-#server4a="https://mirror.archlinux32.org/i686/community/"
+server4="https://busybox.net/downloads/binaries"
 server4b="https://git.archlinux.org/svntogit/community.git/log/?h=packages/busybox"
-#server4c="https://busybox.net/downloads/binaries/1.27.1-i686/busybox"
 server4c="https://busybox.net/downloads/binaries/1.28.1-defconfig-multiarch/busybox-i686"
 #server5="https://github.com"
 
@@ -303,9 +300,9 @@ rm -f /tmp/extras
 
 clear;echo -n "Checking for installed extra's... "
 busybox1=`busybox | head -n1 | awk '{print $2'} | cut -c2-7`
-#busybox2=`curl -L -s $server4/ | grep version | awk '{print $3}' | cut -d '"' -f2 | cut -c1-6`
-busybox3=`curl -L -s $server4b | grep upgpkg | sed -n 's/.*busybox.//p' | sed 's/<\/a><span.*//p' | head -n1`
+busybox3=`curl -L -s $server4/ | grep DIR | awk '{print $5}' | cut -d '"' -f2 | tail -n1`
 busybox2=`echo $busybox3 | cut -c1-6`
+
 echo "Done"
 
 if [ "$busybox1" != "$busybox2" ]
@@ -350,11 +347,6 @@ fi
 if [ $extra_busybox -eq 1 ]
 then
 	echo "Updating busybox to latest version"
-#	curl -L -s $server4/download/ -o /tmp/busybox.pkg.tar.xz
-
-#	curl -L -s $server4a/busybox-$busybox3-i686.pkg.tar.xz -o /tmp/busybox.pkg.tar.xz
-#	/data/hack/bin/busybox tar xJf /tmp/busybox.pkg.tar.xz -C /tmp/
-
 	mkdir -p /tmp/usr/bin/
 	curl -L -s $server4c -o /tmp/usr/bin/busybox
 	chmod 777 /tmp/usr/bin/busybox
